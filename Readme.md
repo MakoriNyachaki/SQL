@@ -39,7 +39,7 @@ This logical symbols are supported in SQL.
 * OR is also used to search for multiple criteria from a database table.
 * Returns all records where either of the criteria is true.
 * Syntax:
-	'SELECT * FROM <tableName> WHERE column_1 = '<criteria1>' OR column_2 > criteria2;'
+	''SELECT * FROM <tableName> WHERE column_1 = '<criteria1>' OR column_2 > criteria2;''
 
 ### IN
 * The IN keyword is used to find rows where a value is in a list of several possible values.
