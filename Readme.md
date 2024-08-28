@@ -17,7 +17,7 @@ The syntax below is used to retrieve partial data from the database table.
 * The _WHERE_ keyword is used to retrieve data that meets a given criteria from the database table.
 * It is used together with other keywords.
 * Syntax:
-	SELECT * FROM <tableName> WHERE columnName = '<creteria>';
+	SELECT * FROM <tableName> WHERE columnName = creteria;
 
 #### Logical Symbols
 * _<_ : Less than
@@ -33,13 +33,13 @@ This logical symbols are supported in SQL.
 * Returns all records that meet both criteria as specified, otherwise returns no record.
 
 * Syntax:
-	SELECT * FROM <tableName> WHERE column_1 = '<criteria>' AND column_2 > <creteria_2>;
+	SELECT * FROM <tableName> WHERE column_1 = criteria AND column_2 > creteria_2;
 
 ### OR
 * OR is also used to search for multiple criteria from a database table.
 * Returns all records where either of the criteria is true.
 * Syntax:
-	'''SELECT * FROM <tableName> WHERE column_1 = '<criteria1>' OR column_2 > criteria2;'''
+	        '''SELECT * FROM <tableName> WHERE column_1 = criteria1 OR column_2 > criteria2;'''
 
 ### IN
 * The IN keyword is used to find rows where a value is in a list of several possible values.
