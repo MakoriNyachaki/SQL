@@ -20,3 +20,51 @@ This shows the Entity-Relationship diagram of the sample HR database.
 
 ![ER Diagram](./ER_diagram.png)
 
+### COUNT(*)
+* Used in retutrning the total number of rows in a table.
+* Syntax:
+		SELECT COUNT(*) FROM <tableName>;
+
+* COUNT(*) can also be used together with the WHERE keyword to return the total number of rows which meet the condition specified in the WHERE clause.
+
+### SUM
+* SUM keyword is used in finding the sum of a value in a table.
+* Syntax:
+
+	SELECT SUM(columnName) FROM <tableName>;
+
+### AVG()
+* AVG is used to find the average of a value from a table.
+* Syntax:
+
+	SELECT AVG(columnName) FROM <tableName>;
+
+### MAX() and MIN()
+* MAX keyword is used to find the maximum value while MIN keyword is used in Findinding the lowest values from a table.
+* Syntax:
+
+	SELECT MAX(columnName) FROM <tableName>;
+### GROUP BY
+* Used to aggregate functions such as COUNT, SUM, AVG, MAX and MIN.
+* It splits the table into different piles baased on the value of each row.
+* Syntax:
+
+	SELECT COUNT(*), columnName1 FROM <tableName> GROUP BY columnName1;
+
+### Nested Queries
+* SQL allows one to put a query inside another query.
+* The nested query is put in parenthesis and it is executed first before the main query is executed.
+* Syntax:
+
+	SELECT * FROM <tableName> WHERE columnName (SELECT MAX(columnName) FROM tableName);
+
+### NULL
+* Used to return a row where a given column has no value.
+* IS NOT NULL does the reverse of NULL.
+* Syntax:
+
+	SELECT * FROM tableName WHERE columnName IS NULL;
+
+
+
+
