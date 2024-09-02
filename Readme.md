@@ -1,8 +1,25 @@
 ### SQL
-_SQL_- stands for Structured Query Language.It is used to communicate with database management systems. 
-It is used to update data on a database, or retrieve data from a database.
-* The most common SQL commands are: _INSERT, UPDATE, DROP, SELECT, ALTER_
+* _SQL_- stands for Structured Query Language.It is a programming language used to communicate with Relational Database Management Systems(RDBMS).
+* It is used to update data on a database, or retrieve data from a database.
+* SQL is defined by:
 
+    1. *Data Definition Language (DDL)* which deals with schema creation and modification. Forexample; CREATE TABLE, ALTER TABLE...
+    2. *Data Manipulation Language (DML) provides the constructs to query data  such as SELECT statement and to update the data such as INSERT, UPDATE, and DELETE statements.
+    3. *Data Control Language (DCL) has statements dealing with user authorization and security. They include GRANT and REVOKE.
+##### SQL Standard
+The SQL standard formalizes SQL syntax structures and behaviors across database products.This makes it more important to the open-source databases such as MYSQL and POstgreSQL where the RDBMS are mainly developed by communities.
+
+##### SQL Dialects
+* Dialects result from requests of new features that do not exist in SQL standard yet.
+* The dialects include: PL/SQL (Procedural Language SQL), Transact-SQL/T-SQL, PL/pgSQL, MySQL.
+
+##### SQL Syntax
+* SQL is a declarative language and therefore, its syntax reads like a natural language.
+* An SQL statement starts with  a verb that describes the action example INSERT.
+* It is then followed by a subject and a predicate. A predicate specifies conditions which can be evaluated as TRUE, FALSE or UNKNOWN.
+* Easy to use and understand mainly because it was designed for the non-technical people. However, lately it being used by highly technical people like Data Analysts/Scientists.
+#### Note
+* To make SQL commands more readable use *uppercase* for _SQL keywords_ and *lowercase* for _SQL identifiers_.
 ## SELECT
 * Used in retrieving data from database tables.
 * It can be used to retrieve the whole data or partial data.
@@ -12,6 +29,7 @@ It is used to update data on a database, or retrieve data from a database.
 The above syntax is used to retrieve the whole data from a database table.
 The syntax below is used to retrieve partial data from the database table.
 	SELECT <colum_1, column_2, ...> FROM <tableName>;
+* When evaluating the _SELECT_ statement , the database system evaluates the _FROM_ clause first and then the _SELECT_ clause.
 
 ## WHERE
 * The _WHERE_ keyword is used to retrieve data that meets a given criteria from the database table.
