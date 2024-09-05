@@ -24,11 +24,11 @@ The SQL standard formalizes SQL syntax structures and behaviors across database 
 * Used in retrieving data from database tables.
 * It can be used to retrieve the whole data or partial data.
 * Syntax:
-	SELECT * FROM <tableName>;
+	    SELECT * FROM <tableName>;
 
 The above syntax is used to retrieve the whole data from a database table.
 The syntax below is used to retrieve partial data from the database table.
-	SELECT <colum_1, column_2, ...> FROM <tableName>;
+	    SELECT <colum_1, column_2, ...> FROM <tableName>;
 * When evaluating the _SELECT_ statement , the database system evaluates the _FROM_ clause first and then the _SELECT_ clause.
 
 ## WHERE
@@ -37,7 +37,7 @@ The syntax below is used to retrieve partial data from the database table.
 * _WHERE_ clause contains one or more logical expressions that evaluate each row in a table.
 * If a row that causes the condition evaluates to true, it will be included in the result set; otherwise, it will be excluded.
 * Syntax:
-	SELECT * FROM <tableName> WHERE columnName = creteria;
+	    SELECT * FROM <tableName> WHERE columnName = creteria;
 	
 ######## Note
 * Note that SQL has three-valued logic which are TRUE, FALSE, and UNKNOWN. It means that if a row causes the condition to evaluate to FALSE or NULL, the row will not be returned.
@@ -69,32 +69,53 @@ The syntax below is used to retrieve partial data from the database table.
 These comparison and logical operators are supported in SQL.
 
 ##### AND
-* AND used to search for multiple attributes when combined with the WHERE keyword.
+* AND used to search for multiple attributes or conditions in the WHERE clause.
 * Allows you to construct multiple conditions in the _WHERE_ clause of an SQL statement such as _DELETE_, _UPDATE_, and _DELETE_.
 * Returns all records that meet both criteria as specified otherwise returns no record.
 
 * Syntax:
-	SELECT * FROM <tableName> WHERE column_1 = criteria AND column_2 > creteria_2;
+	    SELECT * FROM <tableName> WHERE column_1 = criteria AND column_2 > creteria_2;
+
+*SQL AND operator and the short-circuit evaluation*
+* The feature allows the system to stop evaluating the remaining parts of a logical expression as it can determine the result.
+_How it works_
+        1 = 0 AND 1 = 1;
+- The database system processes the two comparisons first and uses the _AND_ operator to evaluate the two results. Though, with the short-circuit the db has to evaluate the left part of the expression because the left part (1=0) returns false it cause the whole condition return false regardless of the right part of the condition. This decrease the CPU computation time and in sometimes helps prevent runtime error e.g (1 = 0 AND 1/0; , if the database system supports the short-circuit feature, it will not evaluate the right part of the expression (1/0) that causes division by zero error.
+* The short-circuit operator can be used in forming complex conditions in your queries.
 
 ##### OR
 * OR is also used to search for multiple criteria from a database table.
-* Like the _AND_ operator.
+* Like the _AND_ operator, it is used in the WHERE clause of the SELECT, DELETE, UPDATE statements of a query.
 * Returns all records where either of the criteria is true.
 * Syntax:
-	        '''SELECT * FROM <tableName> WHERE column_1 = criteria1 OR column_2 > criteria2;'''
+	        SELECT * FROM <tableName> WHERE column_1 = criteria1 OR column_2 > criteria2;
+* If the database system supports the short-circuit feature, the OR operator stops evaluating the remaining parts of the condition as soon as one expression is true.
+* If the OR operator is used together with the AND operator, the AND operator is evaluated before the OR operator. This is called the operator precedence.
 
 ##### IS NULL
 * The _IS NULL_ operator compares a value with a null value and returns true if the compared value is null; otherwise it returns false.
 
 ##### BETWEEN
 * The operator searches for values that are within a set of values, given the minimum value and maximum value. The Maximum and Minimum values are included as part of the conditional set.
+* Syntax:
+
+        exprs BETWEEN low AND high;
+* The BETWEEN operator returns true if the expression is greater than or equal to ( >=) the low value and less than or equal to ( <=) the high value.
+* It technically works as the following:
+        exprs >= low AND exprs <= high;
+* _NOT BETWEEN_ negate the result of the _BETWEEN_ operator.
+* The NOT BETWEEN returns true if the expression is less than low or greater than (>) high; otherwise, it returns false.
 
 ##### IN
 * The IN operator compares a value to a list of specified values. The IN operator returns true if the compared value matches at least one value in the list; otherwise, it returns false.
 * Syntax:
-	SELECT * FROM <tableName> WHERE column_1 IN ('value1', 'value2');
-
+	    SELECT * FROM <tableName> WHERE column_1 IN ('value1', 'value2');
+* You can substitute the IN operator with _=_ and _OR_ operator. Thus can be rewritten as:
+        exprs = value1 OR exprs = value2 OR ...
 * NOT IN is used to find a values that is not in the list of values. Simply reverses what IN does.
+* To substitute the _IN_ operator, you can use the _!=_ and _AND_ operators as follows:
+        exprs != value1 AND exprs != value2
+
 
 ##### LIKE
 * The LIKE operator compares a value to similar values using a wildcard operator. SQL provides two wildcards used in conjunction with the LIKE operator:
@@ -132,7 +153,7 @@ Example:
 ## DISTINCT
 * Used after the SELECT keyword to prevent returning of duplicates.
 * Syntax:
-	SELECT DISTINCT columnName from <tableName>;
+	    SELECT DISTINCT columnName from <tableName>;
 ##### DISTINCT Operator and NULL
 * The DISTINCT operator treats all NULL the same. Therefore, the DISTINCT operator keeps only one NULL in the result set.
 
@@ -141,7 +162,7 @@ Example:
 * By default it sorts the rows in ascending order. To sort in descending order you specify using the DESC keyword.
 * It supports sorting using multiple columns to sort data, you separate the columns in the ORDER BY clause using a comma.
 * Syntax:
-	SELECT * FROM <tableName> ORDER BY <column_x> DESC;
+	    SELECT * FROM <tableName> ORDER BY <column_x> DESC;
 
 ## LIMIT AND OFFSET
 * Use _LIMIT & OFFSET_ clauses to limit the number of rows returned by a query.
