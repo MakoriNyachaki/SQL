@@ -189,3 +189,37 @@ Example:
 * You should always use the _FETCH_ clause with the _ORDER BY_ clause to get consistent output.
 * The _OFFSET FETCH_ clause is supported by many different database system. However, with different implementations for each system.
 * The _OFFSET FETCH_ clause is typically used in the client or web applications that require pagination. For example, if each page has ten rows, to get the rows of the second page, you can skip the first ten rows and returns the next ten rows.
+
+### LIKE 
+* The _LIKE_ operator returns true is a value matches a pattern or false otherwise.
+* Syntax:
+        expression LIKE pattern
+* SQL standard provides you with two wildcard characters to make a pattern.
+
+    1. % percent wildcard matches zero, one, or more characters.
+    2. _ underscore wildcard matches a single character
+    
+Examples:
+
+LIKE 'Kim%' matches a string that starts with Kim.
+LIKE '%er' Matches a string that ends with er.
+LIKE '%ch%' matches a string that has a ch
+LIKE 'Ke_' match a string that starts with Le and is followed by one character e.g. Ken, Kes....
+LIKE '_uy' Matches a string that ends with uy and is precede by one character e.g buy
+LIKE '%are_' match a string that contains are and ends with one character.
+
+*Note:* Besides the % and _ wildcards, some database systems may have other wildcard characters that are specific to those databases.
+
+##### NOT LIKE
+* The _NOT LIKE_ operator returns true if the expression doesn’t match the pattern or false otherwise.
+* Used to negate the LIKE operator.
+* To match a string that contains a wildcard for example 10%, you need to instruct the LIKE operator to treat the % in 10% as a regular character.
+* To do that, you need to explicitly specify an escape character after the ESCAPE clause:
+        expression LIKE pattern ESCAPE escape_character
+* Example:
+        value LIKE '%10!%%' ESCAPE '!'
+* In this example, the ! is an escape character. It instructs the LIKE operator to treat the % in the 10% as a regular character.
+* LIKE operator is used in  WHERE clause of the SELECT, UPDATE, and DELETE statements.
+
+
+

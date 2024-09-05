@@ -116,9 +116,51 @@ WHERE department_id
 IN(2,8) 
 ORDER BY department_id DESC;
 
+-- LIKE OPERATOR --
+-- Finding all employees whose first names begins with 'Da'
 
+SELECT first_name, last_name FROM employees e
+WHERE e.first_name LIKE 'Da%';
 
+-- Select all employees whose first names end with er
+SELECT first_name, last_name FROM employees e 
+WHERE e.first_name LIKE '%er';
 
+-- find all employees whose last names contain 'an'
+SELECT first_name, last_name FROM employees 
+WHERE last_name LIKE '%an%';
+
+-- find all employees whose first name start with'Jo' followed by atleast 2 chracters.
+SELECT first_name, last_name FROM employees e 
+WHERE first_name LIKE 'Jo__';
+
+-- find all employees whose first name start with S but not Sh
+SELECT first_name, last_name from employees e 
+WHERE e.first_name LIKE 'S%'
+
+AND e.first_name NOT LIKE 'Sh%';
+
+-- NULL --
+-- Find all employees without phone numbers
+SELECT first_name, last_name, phone_number FROM employees
+WHERE phone_number IS NULL ORDER BY first_name DESC;
+
+-- find all employees with phone numbers
+SELECT first_name, last_name, phone_number 
+FROM employees
+WHERE phone_number IS NOT NULL ORDER BY first_name DESC;
+
+-- NOT --
+-- find all employees who work in department number 5 with a salary of not more than 5000
+SELECT first_name, last_name, department_id, salary 
+FROM employees 
+WHERE department_id = 5 AND NOT salary > 5000;
+
+-- Find all employees who do not have any dependents. Gist: we use NOT EXISTS
+SELECT employee_id, first_name, last_name
+FROM employees e
+WHERE
+NOT EXISTS(SELECT employee_id FROM dependents d WHERE d.employee_id = e.employee_id);
 
 
 
