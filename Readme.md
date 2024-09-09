@@ -221,5 +221,6 @@ LIKE '%are_' match a string that contains are and ends with one character.
 * In this example, the ! is an escape character. It instructs the LIKE operator to treat the % in the 10% as a regular character.
 * LIKE operator is used in  WHERE clause of the SELECT, UPDATE, and DELETE statements.
 
+### SQL JOINS
 
 

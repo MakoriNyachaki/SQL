@@ -137,7 +137,6 @@ WHERE first_name LIKE 'Jo__';
 -- find all employees whose first name start with S but not Sh
 SELECT first_name, last_name from employees e 
 WHERE e.first_name LIKE 'S%'
-
 AND e.first_name NOT LIKE 'Sh%';
 
 -- NULL --
@@ -162,5 +161,26 @@ FROM employees e
 WHERE
 NOT EXISTS(SELECT employee_id FROM dependents d WHERE d.employee_id = e.employee_id);
 
+-- JOINS: INNER JOIN
+-- To combine the employee and the department to find out employees and theitr respective departments --
 
+SELECT 
+first_name, 
+last_name, 
+e.department_id, 
+d.department_id, 
+department_name 
+FROM employees e
+INNER JOIN departments d 
+ON d.department_id = e.department_id
+WHERE e.department_id IN(1, 2, 3);
 
+-- find the first name, last name, department id, department name, and job title for all employees
+
+SELECT first_name, last_name, e.department_id, d.department_id, j.job_title
+FROM employees e
+INNER JOIN departments d
+ON d.department_id  = e.department_id 
+INNER JOIN jobs j
+ON e.job_id  = j.job_id 
+WHERE e.department_id IN(1, 2, 3);
