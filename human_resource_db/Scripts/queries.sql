@@ -184,3 +184,51 @@ ON d.department_id  = e.department_id
 INNER JOIN jobs j
 ON e.job_id  = j.job_id 
 WHERE e.department_id IN(1, 2, 3);
+
+-- LEFT JOIN --
+-- find locations that are found in the US, UK and China. --
+
+SELECT c.country_name, c.country_id, l.country_id, l.street_address, l.city 
+FROM countries c
+LEFT JOIN locations l
+ON l.country_id = c.country_id
+WHERE l.country_id IN('US', 'UK', 'CN');
+
+-- find a country without a location in the locations table --
+
+SELECT country_name FROM countries c
+LEFT JOIN locations l ON l.country_id = c.country_id 
+WHERE l.location_id IS NULL 
+ORDER BY country_name;
+
+-- LEFT JOIN three tables. regions, countries and locations --
+SELECT c.country_name, c.country_id, l.country_id, c.region_id, r.region_id
+FROM countries c
+LEFT JOIN locations l ON l.country_id = c.country_id 
+LEFT JOIN regions r ON r.region_id  = c.region_id 
+WHERE  c.country_id IN('US', 'CA', 'CN', 'UK')
+ORDER BY country_name ;
+
+SELECT * FROM countries;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

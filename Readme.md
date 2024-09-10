@@ -222,5 +222,45 @@ LIKE '%are_' match a string that contains are and ends with one character.
 * LIKE operator is used in  WHERE clause of the SELECT, UPDATE, and DELETE statements.
 
 ### SQL JOINS
+The SELECT statement is not only used to query data from a single table but also, can be used in linking multiple tables and the process id known as *joining*.
+##### INNER JOINS
+* Returns rows if there is at least one row in both tables that matches the join condition. The inner join eliminates rows that do not match with a row of the other table.
+* The INNER JOIN clause appears after the FROM clause. The condition to match between table A and table B is specified after the ON keyword. This condition is called join condition i.e., B.n = A.n
+* The INNER JOIN clause can join three or more tables as long as they have relationships, typically foreign key relationships.
+* For example, the following statement illustrates how to join 3 tables: A, B, and C:
+        SELECT
+        A.n
+        FROM A
+        INNER JOIN B ON B.n = A.n
+        INNER JOIN C ON C.n = A.n;
+
+##### LEFT JOIN
+* The LEFT JOIN returns all rows from the left table whether they have matching rows in the right table or not.
+* For example if you have table A with rows 1, 2, 3, 4,and 5 and table B with rows 4, 5, 6, 7, 8. When we join table A  with table B, all the rows in table A(the left table) are included in the result set whether there is a matching row in table B or not. So the result set is 1, 2, 3, 4,and 5.
+* Syntax: The LEFT JOIN clause appears immediately after the FROM clause. The condition that follows the ON keyword is called the join condition B.n = A.n.
+        SELECT
+            A.n
+        FROM
+            A
+        LEFT JOIN B ON B.n = A.n;
+        
+* Returning the query without a WHERE clause it returns all rows from the LEFT table with their NULLS from the right table.
+
+##### SELF JOIN
+* We join a table to itself to evaluate the rows with other rows in the same table. To perform the self-join, we use either an inner join or left join clause.
+* Because the same table appears twice in a single query, we have to use the table aliases. The following statement illustrates how to join a table to itself.
+
+        SELECT
+	        column1,
+	        column2,
+	        column3,
+        FROM
+	        table1 A
+        INNER JOIN table1 B ON B.column1 = A.column2;
+
+##### RIGHT JOIN
+        
+
+
 
 
