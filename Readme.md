@@ -257,10 +257,40 @@ The SELECT statement is not only used to query data from a single table but also
         FROM
 	        table1 A
         INNER JOIN table1 B ON B.column1 = A.column2;
+        
+##### FULL OUTER JOIN
+* The full outer join includes all rows from the joined tables whether or not the other table has the matching row.
+* If the rows in the joined tables do not match, the result set of the full outer join contains NULL values for every column of the table that lacks a matching row. For the matching rows, a single row that has the columns populated from the joined table is included in the result set.
+* Syntax:
+        SELECT column_list
+        FROM A
+        FULL OUTER JOIN B ON B.n = A.n;
+        
+* Similarly, in SQL, a Cartesian product of two tables A and B is a result set in which each row in the first table (A) is paired with each row in the second table (B). Suppose the A table has n rows and the B table has m rows, the result of the cross join of the A and B tables have n x m rows.
+* Syntax:
+        SELECT column_list
+        FROM A
+        CROSS JOIN B;
+        
+OR
+        SELECT column_list
+        FROM A, B;
+        
+*Note:* _Note that unlike the INNER JOIN, LEFT JOIN, and FULL OUTER JOIN, the CROSS JOIN clause does not have a join condition._
 
 ##### RIGHT JOIN
+
+### GROUP BY
+* The _GROUP BY_ is an optional clause of the SELECT statement and is used to group rows based on values of one or more columns. It returns one row for each group.
+* Syntax:
         
-
-
-
+        SELECT
+	        column1,
+	        column2,
+	        aggregate_function(column3)
+        FROM
+	        table_name
+        GROUP BY
+	        column1,
+	        column2;
 

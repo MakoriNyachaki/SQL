@@ -209,9 +209,23 @@ LEFT JOIN regions r ON r.region_id  = c.region_id
 WHERE  c.country_id IN('US', 'CA', 'CN', 'UK')
 ORDER BY country_name ;
 
-SELECT * FROM countries;
+-- SELF JOIN --
 
+SELECT 
+e.first_name ||' '|| e.last_name AS employee, 
+m.first_name ||' '|| m.last_name AS manager
+FROM employees e
+INNER JOIN employees m ON m.employee_id = e.manager_id
+ORDER BY manager;
 
+SELECT 
+e.first_name ||' '|| e.last_name AS employee, 
+m.first_name ||' '|| m.last_name AS manager
+FROM employees e
+LEFT JOIN employees m ON m.employee_id = e.manager_id
+ORDER BY manager;
+
+SELECT * FROM employees;
 
 
 
