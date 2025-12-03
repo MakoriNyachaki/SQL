@@ -104,3 +104,22 @@ INNER JOIN Authors ON Authors.ID = BookAuthors.AuthorID
 GROUP BY Name
 ORDER BY 'Number of Books' DESC;
 
+--CREATE A TEMPORARY TABLE TO STORE BOOK DETAILS--
+--DROP TABLE--
+
+DROP TABLE IF EXISTS #Book_Details;
+
+CREATE TABLE #Book_Details(BookID INT,
+Book_Title VARCHAR(100),
+Author VARCHAR(100));
+
+INSERT INTO #Book_Details
+SELECT b.ID,
+b.Title,
+a.Name
+From BookAuthors ba
+JOIN Books b ON ba.BookID = b.ID
+JOIN Authors a ON ba.AuthorID=a.ID;
+
+SELECT * FROM #Book_Details ORDER BY BookID ASC;
+
